@@ -25,103 +25,103 @@ async function DepartmentDetailPage({
   }
 
   return (
-    <div className="bg-white min-h-[85vh] text-black">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="min-h-[85vh] py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="text-sm text-gray-500 mb-4 flex items-center gap-2">
+        <div className="text-xs sm:text-sm text-slate-500 mb-6 flex items-center gap-2 flex-wrap">
           <Link
             href="/department"
-            className="hover:text-blue-600 transition-colors"
+            className="hover:text-blue-600 font-medium transition-colors"
           >
             Departments
           </Link>
-          <span>/</span>
-          <span>{deptItem.department}</span>
-          <span>/</span>
-          <span className="font-semibold text-gray-900">{deptItem.name}</span>
+          <span className="text-slate-300">/</span>
+          <span className="text-slate-600 font-medium">{deptItem.department}</span>
+          <span className="text-slate-300">/</span>
+          <span className="font-semibold text-slate-900">{deptItem.name}</span>
         </div>
 
         {/* Action Row */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
           <Link
             href="/department"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
           >
             <span aria-hidden="true">&larr;</span>
             <span>Return to {deptItem.department} Department</span>
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
           >
             <span>View all students</span>
             <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>
 
-        {/* Main Details Card Matching Screenshot */}
-        <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-2xs mb-8">
-          <div className="flex items-start justify-between gap-4">
-            <div className="max-w-2xl">
+        {/* Main Details Card */}
+        <div className="border border-slate-200/90 rounded-2xl p-6 sm:p-8 bg-white shadow-xs mb-10">
+          <div className="flex flex-col md:flex-row items-start justify-between gap-6">
+            <div className="max-w-3xl">
               <div className="flex items-center gap-3 flex-wrap">
-                <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                   {deptItem.name}
                 </h1>
-                <span className="px-2.5 py-0.5 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200/80 rounded font-medium">
+                <span className="px-3 py-1 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200/80 rounded-lg font-semibold">
                   Specialization under {deptItem.department}
                 </span>
               </div>
-              <p className="text-sm text-gray-600 mt-3 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
                 {deptItem.description}
               </p>
             </div>
 
-            <div className="flex flex-col items-end shrink-0">
-              <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+            <div className="flex flex-col items-start md:items-end shrink-0 bg-slate-50 p-3.5 rounded-xl border border-slate-200/70">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                 DEPARTMENT TRACK
               </span>
-              <div className="mt-1 px-3 py-1 border border-gray-200 rounded text-sm font-semibold text-gray-800 bg-white">
+              <div className="mt-1 px-3 py-1 rounded-lg text-sm font-mono font-bold text-slate-800 bg-white border border-slate-200">
                 {deptItem.code}
               </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-100 my-6"></div>
+          <div className="border-t border-slate-100 my-6"></div>
 
           {/* 4 Detail Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            <div>
-              <span className="text-xs text-gray-500 block font-medium">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-slate-50/70 p-4 rounded-xl border border-slate-100">
+              <span className="text-xs text-slate-400 block font-semibold uppercase tracking-wider">
                 Academic Lead
               </span>
-              <span className="text-sm font-bold text-gray-900 block mt-1">
+              <span className="text-sm font-bold text-slate-900 block mt-1.5">
                 {deptItem.academicLead || "Prof. Elena Vance"}
               </span>
             </div>
 
-            <div>
-              <span className="text-xs text-gray-500 block font-medium">
+            <div className="bg-slate-50/70 p-4 rounded-xl border border-slate-100">
+              <span className="text-xs text-slate-400 block font-semibold uppercase tracking-wider">
                 Primary Core Lab
               </span>
-              <span className="text-sm font-bold text-gray-900 block mt-1">
+              <span className="text-sm font-bold text-slate-900 block mt-1.5">
                 {deptItem.primaryCoreLab || "Turing Hall 408"}
               </span>
             </div>
 
-            <div>
-              <span className="text-xs text-gray-500 block font-medium">
+            <div className="bg-slate-50/70 p-4 rounded-xl border border-slate-100">
+              <span className="text-xs text-slate-400 block font-semibold uppercase tracking-wider">
                 Total Enrollment
               </span>
-              <span className="text-sm font-bold text-gray-900 block mt-1">
+              <span className="text-sm font-bold text-slate-900 block mt-1.5">
                 {deptItem.students.length} Active Enrollees
               </span>
             </div>
 
-            <div>
-              <span className="text-xs text-gray-500 block font-medium">
+            <div className="bg-slate-50/70 p-4 rounded-xl border border-slate-100">
+              <span className="text-xs text-slate-400 block font-semibold uppercase tracking-wider">
                 Curriculum Cycle
               </span>
-              <span className="text-sm font-bold text-gray-900 block mt-1">
+              <span className="text-sm font-bold text-slate-900 block mt-1.5">
                 {deptItem.curriculumCycle || "2024–2025 Revised"}
               </span>
             </div>
@@ -129,26 +129,26 @@ async function DepartmentDetailPage({
         </div>
 
         {/* Students Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-gray-900">
+        <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
+          <div className="flex items-center gap-2.5">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900">
               Students in this Specialization
             </h2>
-            <span className="px-2 py-0.5 text-xs bg-gray-100 text-gray-700 font-bold rounded">
+            <span className="px-2.5 py-0.5 text-xs bg-slate-100 text-slate-700 font-bold rounded-lg border border-slate-200">
               {deptItem.students.length}
             </span>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">Filtered by Track:</span>
-            <span className="px-2.5 py-1 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200/80 rounded font-medium">
+            <span className="text-xs sm:text-sm text-slate-500">Filtered by Track:</span>
+            <span className="px-2.5 py-1 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200/80 rounded-lg font-semibold">
               {deptItem.name}
             </span>
           </div>
         </div>
 
         {/* Student Cards Grid */}
-        <div className="flex flex-wrap gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {deptItem.students.map((sid) => {
             const studentObj = students.find((s) => s.id === sid);
             if (!studentObj) return null;

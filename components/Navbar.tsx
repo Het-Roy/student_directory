@@ -3,33 +3,42 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="w-[98vw] border h-[7vh] flex items-center bg-white text-black">
-      <Link className="w-[17%] h-[100%]" href={"/"}>
-        <Image
-          src={"/logo.png"}
-          className="w-[100%] h-[100%]"
-          width={300}
-          height={300}
-          alt="Logo"
-        />
-      </Link>
-      <div className="flex ml-[10vw] w-[40%] font-bold gap-[1vw] h-[100%]">
-        <Link className="w-[100%] h-[100%]" href={"/"}>
-          <div className="flex w-[100%] h-[100%] border-b-[0.2vw] border-blue-800 justify-center items-center">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/85 backdrop-blur-md shadow-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 group transition-transform active:scale-98">
+          <div className="relative h-10 w-28 sm:w-36 overflow-hidden flex items-center">
+            <Image
+              src="/logo.png"
+              className="object-contain h-full w-full group-hover:opacity-90 transition-opacity"
+              width={160}
+              height={40}
+              priority
+              alt="Logo"
+            />
+          </div>
+        </Link>
+
+        <nav className="flex items-center gap-1 sm:gap-2">
+          <Link
+            href="/"
+            className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200"
+          >
             Students
-          </div>
-        </Link>
-        <Link className="w-[100%] h-[100%]" href={"/department"}>
-          <div className="flex w-[100%] h-[100%] border-b-[0.2vw] border-blue-800 justify-center items-center">
+          </Link>
+          <Link
+            href="/department"
+            className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200"
+          >
             Department
-          </div>
-        </Link>
-        <Link className="w-[100%] h-[100%]" href={"/about"}>
-          <div className="flex w-[100%] h-[100%] border-b-[0.2vw] border-blue-800 justify-center items-center">
+          </Link>
+          <Link
+            href="/about"
+            className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-200"
+          >
             About
-          </div>
-        </Link>
+          </Link>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }

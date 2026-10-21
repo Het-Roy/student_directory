@@ -3,20 +3,26 @@ import DepartmentCard from "@/components/DepartmentCard";
 
 async function DepartmentPage() {
   return (
-    <div className="bg-white min-h-[85vh]">
-      <div className="w-[100vw] border-b h-[10vw]">
-        <div className="w-[100%] text-[2vw] pl-[10vw] mt-[2vw] flex items-center font-bold h-[30%] text-black">
-          Departments
-        </div>
-        <div className="w-[100%] text-[1vw] pl-[10vw] flex items-center text-gray-700 h-[25%]">
-          Overview of campus departments and specialized academic tracks.
+    <div>
+      {/* Header Banner */}
+      <div className="border-b border-slate-200/80 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Departments
+          </h1>
+          <p className="mt-1 text-sm sm:text-base text-slate-500">
+            Overview of campus departments, curriculum programs, and specialized academic tracks.
+          </p>
         </div>
       </div>
 
-      <div className="w-[100vw] gap-[2vw] p-[2vw] pl-[10vw] flex flex-wrap bg-white">
-        {departmentData.map((e) => {
-          return <DepartmentCard key={e.id} department={e} />;
-        })}
+      {/* Department Cards Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {departmentData.map((e) => {
+            return <DepartmentCard key={e.id} department={e} />;
+          })}
+        </div>
       </div>
     </div>
   );

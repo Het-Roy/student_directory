@@ -18,54 +18,70 @@ export default function DepartmentCard({
   if (!department) return null;
 
   return (
-    <div className="w-[90%] h-[12vw] pt-[1vw] border mb-[2vw] bg-white">
-      <div className="w-[100%] h-[30%] flex gap-[1vw] pl-[2vw] items-center">
-        <Image
-          src={"/earthlogo.png"}
-          alt="Earth Logo"
-          className="w-[4%] border h-[100%] p-[0.5vw] bg-blue-200 rounded-[1vw]"
-          width={300}
-          height={300}
-        />
-        <div className="text-[1.5vw] font-bold">
-          {department.department}
+    <div className="group bg-white rounded-2xl border border-slate-200/90 p-6 shadow-xs hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col justify-between">
+      <div>
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div className="flex items-center gap-3.5">
+            <div className="h-12 w-12 rounded-xl bg-blue-50 border border-blue-100/80 flex items-center justify-center p-2 shrink-0">
+              <Image
+                src="/earthlogo.png"
+                alt="Department Icon"
+                className="w-full h-full object-contain"
+                width={48}
+                height={48}
+              />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                {department.department}
+              </h2>
+              {department.name && (
+                <p className="text-xs font-medium text-slate-400 mt-0.5">
+                  {department.name}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <Link
+            className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-100 transition-colors shrink-0"
+            href={`/department/${department.id}`}
+          >
+            <span>View</span>
+            <span className="transform group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+          </Link>
         </div>
-      </div>
-      <div className="w-[100%] h-[30%] flex">
-        <p className="w-[80%] pl-[2.5vw] h-[100%] text-[1.2vw] flex text-gray-500 font-border items-center">
+
+        <p className="text-sm text-slate-600 leading-relaxed mb-6">
           {department.description}
         </p>
-        <Link
-          className="w-[20%] h-[100%] text-[1.3vw] flex font-bold justify-center text-blue-500 font-border items-center"
-          href={`/department/${department.id}`}
-        >
-          {"View >"}
-        </Link>
       </div>
-      <div className="w-[100%] h-[30%] flex">
-        <div className="w-[20%] flex justify-center gap-[1vw] items-center h-[100%]">
-          <Image
-            src={"/earthlogo.png"}
-            alt="Earth Logo"
-            className="w-[10%] border h-[50%] rounded-[1vw]"
-            width={300}
-            height={300}
-          />
-          <p className="text-[1vw]">
-            {department.specializationCount} specialization
-          </p>
+
+      <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+        <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/70">
+          <div className="w-5 h-5 rounded-md bg-white border border-slate-200 flex items-center justify-center p-0.5">
+            <Image
+              src="/earthlogo.png"
+              alt="Track"
+              className="w-full h-full object-contain"
+              width={16}
+              height={16}
+            />
+          </div>
+          <span>{department.specializationCount} Specializations</span>
         </div>
-        <div className="w-[20%] flex justify-center gap-[1vw] items-center h-[100%]">
-          <Image
-            src={"/earthlogo.png"}
-            alt="Earth Logo"
-            className="w-[10%] border h-[50%] rounded-[1vw]"
-            width={300}
-            height={300}
-          />
-          <p className="text-[1vw]">
-            {department.studentCount} Enrolled Students
-          </p>
+
+        <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200/70">
+          <div className="w-5 h-5 rounded-md bg-white border border-slate-200 flex items-center justify-center p-0.5">
+            <Image
+              src="/earthlogo.png"
+              alt="Students"
+              className="w-full h-full object-contain"
+              width={16}
+              height={16}
+            />
+          </div>
+          <span>{department.studentCount} Enrolled Students</span>
         </div>
       </div>
     </div>

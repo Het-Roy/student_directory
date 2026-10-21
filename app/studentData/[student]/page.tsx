@@ -1,3 +1,4 @@
+import Link from "next/link";
 import studentData from "../../../data/studentData";
 import { notFound } from "next/navigation";
 
@@ -22,101 +23,115 @@ export default async function StudentProfilePage({
   }
 
   return (
-    <div className="w-screen flex justify-center items-center py-[2vw] bg-white text-black min-h-[85vh]">
-      <div className="w-[80%] border border-gray-200 rounded-2xl bg-white shadow-xs overflow-hidden">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      {/* Back navigation */}
+      <div className="mb-6">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+        >
+          <span>&larr;</span>
+          <span>Back to Student Directory</span>
+        </Link>
+      </div>
+
+      <div className="border border-slate-200/90 rounded-2xl bg-white shadow-xs overflow-hidden">
         {/* Profile Header */}
-        <div className="w-[100%] flex border-b border-gray-200 p-[1.5vw] bg-gray-50/50 items-center">
-          <div className="w-[5vw] h-[5vw] text-[1.8vw] bg-blue-100 text-blue-700 rounded-xl font-bold border border-blue-200 flex justify-center items-center shrink-0">
+        <div className="p-6 sm:p-8 border-b border-slate-200/90 bg-gradient-to-r from-slate-50 via-white to-blue-50/40 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 text-2xl font-extrabold bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-2xl shadow-md shadow-blue-500/20 flex justify-center items-center shrink-0">
             {currentStudent.initials}
           </div>
-          <div className="ml-[1.5vw] flex flex-col justify-center">
-            <div className="font-bold text-[1.8vw] text-gray-900 leading-tight">
+          <div className="flex flex-col justify-center">
+            <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 leading-tight">
               {currentStudent.name}
-            </div>
-            <div className="flex items-center gap-[0.8vw] mt-[0.5vw]">
-              <div className="px-[0.8vw] py-[0.2vw] rounded-md bg-blue-50 text-[0.9vw] text-blue-700 font-semibold border border-blue-200">
+            </h1>
+            <div className="flex items-center gap-2 mt-2 flex-wrap">
+              <span className="px-3 py-1 rounded-lg bg-blue-50 text-xs font-mono font-bold text-blue-700 border border-blue-200/80">
                 {currentStudent.studentId}
-              </div>
-              <div className="px-[0.8vw] py-[0.2vw] rounded-md bg-green-50 text-green-700 text-[0.9vw] font-semibold border border-green-200">
+              </span>
+              <span className="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200/80 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 {currentStudent.status}
-              </div>
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Basic Info */}
-        <div className="border-b border-gray-200 p-[1.5vw] space-y-[1vw]">
-          <div className="flex w-[100%]">
-            <div className="w-[50%]">
-              <div className="text-[0.9vw] text-gray-500 font-bold uppercase tracking-wide">DEPARTMENT</div>
-              <div className="text-[1.1vw] text-gray-800 font-medium mt-[0.2vw]">{currentStudent.department}</div>
-            </div>
-            <div className="w-[50%]">
-              <div className="text-[0.9vw] text-gray-500 font-bold uppercase tracking-wide">STUDY YEAR</div>
-              <div className="text-[1.1vw] text-gray-800 font-medium mt-[0.2vw]">{currentStudent.studyYear}</div>
-            </div>
+        {/* Basic Info Grid */}
+        <div className="p-6 sm:p-8 border-b border-slate-200/80 bg-slate-50/40 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs">
+            <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">Department</div>
+            <div className="text-sm sm:text-base text-slate-900 font-semibold mt-1">{currentStudent.department}</div>
           </div>
 
-          <div className="flex w-[100%]">
-            <div className="w-[50%]">
-              <div className="text-[0.9vw] text-gray-500 font-bold uppercase tracking-wide">EMAIL</div>
-              <div className="text-[1.1vw] text-blue-600 font-medium mt-[0.2vw]">{currentStudent.email}</div>
-            </div>
-            <div className="w-[50%]">
-              <div className="text-[0.9vw] text-gray-500 font-bold uppercase tracking-wide">ENROLLED</div>
-              <div className="text-[1.1vw] text-gray-800 font-medium mt-[0.2vw]">{currentStudent.enrolled}</div>
-            </div>
+          <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs">
+            <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">Study Year</div>
+            <div className="text-sm sm:text-base text-slate-900 font-semibold mt-1">{currentStudent.studyYear}</div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs">
+            <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">Email</div>
+            <div className="text-sm sm:text-base text-blue-600 font-semibold mt-1 truncate">{currentStudent.email}</div>
+          </div>
+
+          <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs">
+            <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">Enrolled</div>
+            <div className="text-sm sm:text-base text-slate-900 font-semibold mt-1">{currentStudent.enrolled}</div>
           </div>
         </div>
 
         {/* About Section */}
-        <div className="border-b border-gray-200 p-[1.5vw]">
-          <div className="text-[1.3vw] font-bold mb-[0.4vw] text-gray-900">About</div>
-          <div className="text-[1vw] text-gray-600 leading-relaxed">
+        <div className="p-6 sm:p-8 border-b border-slate-200/80">
+          <h2 className="text-base font-bold text-slate-900 mb-2">About</h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
             {currentStudent.about}
-          </div>
+          </p>
         </div>
 
         {/* Academic Details Section */}
-        <div className="border-b border-gray-200 p-[1.5vw]">
-          <div className="text-[1.3vw] font-bold mb-[0.8vw] text-gray-900">Academic Details</div>
-          <div className="w-[100%] flex border border-gray-200 rounded-xl overflow-hidden">
-            <div className="w-[50%] border-r border-gray-200 p-[1vw] bg-gray-50 space-y-[0.5vw]">
-              <div className="text-[0.95vw] text-gray-600 font-medium">Department</div>
-              <div className="text-[0.95vw] text-gray-600 font-medium">Current Academic Standing</div>
-            </div>
-            <div className="w-[50%] p-[1vw] space-y-[0.5vw] font-semibold text-gray-900 bg-white">
-              <div className="text-[0.95vw]">
-                {currentStudent.academicDetails.department}
+        <div className="p-6 sm:p-8 border-b border-slate-200/80">
+          <h2 className="text-base font-bold text-slate-900 mb-4">Academic Details</h2>
+          <div className="border border-slate-200 rounded-xl overflow-hidden shadow-2xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+              <div className="p-4 sm:p-5 bg-slate-50/60 space-y-3">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">Department</span>
+                  <span className="text-sm font-semibold text-slate-800 block mt-0.5">{currentStudent.academicDetails.department}</span>
+                </div>
               </div>
-              <div className="text-[0.95vw] text-emerald-700">
-                {currentStudent.academicDetails.currentStanding}
+              <div className="p-4 sm:p-5 bg-white space-y-3">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">Current Academic Standing</span>
+                  <span className="text-sm font-bold text-emerald-700 block mt-0.5">{currentStudent.academicDetails.currentStanding}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Enrolled Subjects Section */}
-        <div className="p-[1.5vw]">
-          <div className="text-[1.1vw] font-bold mb-[0.8vw] text-gray-800 uppercase tracking-wide">
+        <div className="p-6 sm:p-8">
+          <h2 className="text-base font-bold text-slate-900 mb-4">
             Enrolled Subjects
-          </div>
+          </h2>
 
-          <div className="w-[100%] flex border border-gray-200 rounded-xl overflow-hidden">
-            <div className="w-[75%] border-r border-gray-200 p-[1vw] space-y-[0.6vw]">
-              {currentStudent.enrolledSubjects.map((sub) => (
-                <div key={sub.code} className="text-[0.95vw] text-gray-800">
-                  <span className="font-semibold text-gray-900">{sub.code}:</span> {sub.name}
+          <div className="border border-slate-200 rounded-xl overflow-hidden shadow-2xs divide-y divide-slate-100">
+            {currentStudent.enrolledSubjects.map((sub) => (
+              <div
+                key={sub.code}
+                className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-slate-50/60 transition-colors"
+              >
+                <div className="text-sm text-slate-800">
+                  <span className="font-mono font-bold text-blue-600 mr-2">{sub.code}</span>
+                  <span className="font-medium text-slate-900">{sub.name}</span>
                 </div>
-              ))}
-            </div>
-            <div className="w-[25%] p-[1vw] space-y-[0.6vw] bg-gray-50">
-              {currentStudent.enrolledSubjects.map((sub) => (
-                <div key={sub.code} className="text-[0.95vw] text-gray-600 font-medium">
-                  {sub.category}
+                <div className="shrink-0">
+                  <span className="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-600 rounded-lg border border-slate-200">
+                    {sub.category}
+                  </span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
